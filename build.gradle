@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'isoss.chaika.rpc'
+version '1.0'
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+}
+
+shadowJar {
+    configurations = [project.configurations.compile]
+    classifier = ''
+}
+
+jar{
+    manifest{
+        attributes('Main-Class': 'isoss.chaika.rpc.ChaikaRPC')
+    }
+}
+
+dependencies {
+    compile 'club.minnced:java-discord-rpc:2.0.1'
+    compile 'com.google.code.gson:gson:2.8.6'
+}
