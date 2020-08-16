@@ -26,15 +26,17 @@ public class ChaikaPresence {
 
         rpc.Discord_UpdatePresence(chaikaPresence);
 
-        new Thread(() -> {
+        Thread t = new Thread(() -> {
 
-            while(!Thread.currentThread().isInterrupted()) {
+            while(true) {
                 rpc.Discord_RunCallbacks();
                 try { Thread.sleep(2000); } catch(InterruptedException e) {}
 
             }
 
-        }, "ChaikaRPC-Callback-Handler").start();
+        }, "ChaikaRPC-Callback-Handler");
+        t.setDaemon(true);
+        t.start();
 
     }
 
