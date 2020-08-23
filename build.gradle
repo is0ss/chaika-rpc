@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'isoss.chaika.rpc'
-version '1.0'
+version '1.1'
 
 compileJava.options.encoding = 'UTF-8'
 
@@ -19,7 +19,7 @@ shadowJar {
 
 jar{
     manifest{
-        attributes('Main-Class': 'Main')
+        attributes('Main-Class': 'asthowen.chaika.ui.Main')
     }
 }
 

@@ -7,6 +7,12 @@ import club.minnced.discord.rpc.DiscordRichPresence;
 public class ChaikaPresence {
 
     private DiscordRichPresence chaikaPresence;
+    private long startTimestamp;
+
+    public ChaikaPresence() {
+        this.chaikaPresence = new DiscordRichPresence();
+
+    }
 
     public void init() {
         DiscordRPC rpc = DiscordRPC.INSTANCE;
@@ -16,8 +22,28 @@ public class ChaikaPresence {
 
         rpc.Discord_Initialize(ConfigWrapper.get("applicationId"), handlers, true, "");
 
-        this.chaikaPresence = new DiscordRichPresence();
-        this.chaikaPresence.startTimestamp = System.currentTimeMillis() / 1000;
+        this.startTimestamp = System.currentTimeMillis() / 1000;
+        this.updatePresence();
+
+        Thread callbackHandler = new Thread(() -> {
+
+            while(true) {
+                rpc.Discord_RunCallbacks();
+                try { Thread.sleep(2000); } catch(InterruptedException e) {}
+
+            }
+
+        }, "ChaikaRPC-Callback-Handler");
+
+        callbackHandler.setDaemon(true);
+        callbackHandler.start();
+
+    }
+
+    public void updatePresence() {
+        DiscordRPC rpc = DiscordRPC.INSTANCE;
+
+        this.chaikaPresence.startTimestamp = startTimestamp;
         this.chaikaPresence.largeImageKey = ConfigWrapper.get("largeImageKey");
         this.chaikaPresence.largeImageText = ConfigWrapper.get("largeImageText");
         this.chaikaPresence.smallImageKey = ConfigWrapper.get("smallImageKey");
@@ -25,16 +51,6 @@ public class ChaikaPresence {
         this.chaikaPresence.details = ConfigWrapper.get("details");
 
         rpc.Discord_UpdatePresence(chaikaPresence);
-
-        new Thread(() -> {
-
-            while(!Thread.currentThread().isInterrupted()) {
-                rpc.Discord_RunCallbacks();
-                try { Thread.sleep(2000); } catch(InterruptedException e) {}
-
-            }
-
-        }, "ChaikaRPC-Callback-Handler").start();
 
     }
 

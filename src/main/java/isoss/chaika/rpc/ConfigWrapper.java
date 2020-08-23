@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ConfigWrapper {
 
@@ -17,11 +18,11 @@ public class ConfigWrapper {
         config = new JsonObject();
 
         setDefault("applicationId", Constants.APPLICATION_ID);
+        setDefault("details", Constants.DETAILS);
         setDefault("largeImageKey", Constants.LARGE_IMAGE_KEY);
         setDefault("largeImageText", Constants.LARGE_IMAGE_TEXT);
         setDefault("smallImageKey", Constants.SMALL_IMAGE_KEY);
         setDefault("smallImageText", Constants.SMALL_IMAGE_TEXT);
-        setDefault("details", Constants.DETAILS);
 
     }
 
