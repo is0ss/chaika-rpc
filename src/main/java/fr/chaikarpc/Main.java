@@ -1,8 +1,7 @@
-package asthowen.chaika.ui;
+package fr.chaikarpc;
 
-import asthowen.chaika.ui.panels.ConfigPanel;
-import asthowen.chaika.ui.panels.MainPanel;
-import isoss.chaika.rpc.ChaikaPresence;
+import fr.chaikarpc.ui.panels.ConfigPanel;
+import fr.chaikarpc.ui.panels.MainPanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

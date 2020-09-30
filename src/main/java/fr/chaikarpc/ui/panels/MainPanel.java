@@ -1,6 +1,6 @@
-package asthowen.chaika.ui.panels;
+package fr.chaikarpc.ui.panels;
 
-import asthowen.chaika.ui.utils.Utils;
+import fr.chaikarpc.utils.Utils;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package isoss.chaika.rpc;
+package fr.chaikarpc;
 
 public class Constants {
 

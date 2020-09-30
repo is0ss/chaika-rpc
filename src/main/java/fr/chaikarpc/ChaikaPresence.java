@@ -1,8 +1,9 @@
-package isoss.chaika.rpc;
+package fr.chaikarpc;
 
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
+import fr.chaikarpc.utils.ConfigWrapper;
 
 public class ChaikaPresence {
 

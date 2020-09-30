@@ -1,4 +1,4 @@
-package asthowen.chaika.ui.utils;
+package fr.chaikarpc.utils;
 
 import javax.swing.*;
 import java.awt.*;
